@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Buy our product</title>
+</head>
+<body>
+    <div class="content">
+    <script>
+        function getRadioVal(form, name) {
+            var val;
+            var radios = form.elements[name];
+            for (var i=0, len=radios.length; i<len; i++) {
+                if ( radios[i].checked ) {
+                    val = radios[i].value;
+                    break;
+                }
+            }
+            return val;
+        }
+        function setPrice() 
+        {
+            var selectedPrice = getRadioVal(document.getElementById('main-form'), 'name-license');
+            var selectedMult = document.getElementById('set-amount');
+            var resultPrice = selectedPrice * selectedMult.value;
+            if (typeof selectedPrice != "undefined")
+            {
+                document.getElementById("text-price").innerHTML = "PRICE: " + resultPrice +" US$";
+            }
+
+        }
+       </script>
+    <form id="main-form" onchange=setPrice()>
+        <div>
+          <input type="radio" id="radio-license-1" name="name-license" value="13">
+          <label for="contactChoice1">LICENSE PLAN #1</label>
+          <div class="price"> $13 per license</div>
+          <input type="radio" id="radio-license-2" name="name-license" value="26">
+          <label for="contactChoice2">LICENSE PLAN #2</label>
+          <div class="price"> $26 per license</div>
+          <input type="radio" id="radio-license-3" name="name-license" value="39">
+          <label for="contactChoice3">LICENSE PLAN #3</label>
+          <div class="price"> $39 per license</div>
+        </div>
+        <div class=line_upper></div>
+        <div class="license">Select amount of licenses:
+        <select id="set-amount">
+            <option value="1">1 pc.</option>
+            <option value="2">2 pc.</option>
+            <option value="3">3 pc.</option>
+            <option value="4">4 pc.</option>
+            <option value="5">5 pc.</option>
+            <option value="6">6 pc.</option>
+            <option value="7">7 pc.</option>
+            <option value="8">8 pc.</option>
+            <option value="9">9 pc.</option>
+            <option value="10">10 pc.</option>
+          </select>
+        </div>
+        <div class=line_lower></div>
+        <p id="text-price" class="pricetext">PRICE: 0 US$</p>
+      </form>
+      <button class="button" onclick="location.href='https://www.google.com'" type="submit">BUY NOW</button>
+    </div>
+</body>
+</html>
